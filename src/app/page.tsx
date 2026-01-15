@@ -1,65 +1,136 @@
+// ============================================
+// page.tsx - Enhanced Homepage
+// ============================================
+
 import Image from "next/image";
+import { DotScreenShader } from "@/components/dot-shader-background";
+import { Navigation } from "@/components/navigation";
+import { ContactSection } from "@/components/sections/contact";
+import { ExperienceSection } from "@/components/sections/experience";
+import { ProjectsSection } from "@/components/sections/projects";
+import { SkillsSection } from "@/components/sections/skills";
+import { ScrollIndicator } from "@/components/ui/scroll-indicator";
+import { Typewriter } from "@/components/ui/typewriter-text";
 
 export default function Home() {
-  return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+    return (
+        <main className="bg-black">
+            {/* Fixed Navigation */}
+            <Navigation />
+
+            {/* Hero Section */}
+            <section
+                id="hero"
+                className="h-svh w-screen flex flex-col gap-6 items-center justify-center relative overflow-hidden"
             >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
+                {/* Shader Background */}
+                <div className="absolute inset-0">
+                    <DotScreenShader />
+                </div>
+
+                {/* Content */}
+                <div className="relative z-10 flex flex-col items-center gap-6 px-4">
+                    {/* Profile Picture */}
+                    {/*<div className="relative">*/}
+                    {/*    <div className="absolute inset-0 rounded-full bg-white/10 blur-xl scale-110" />*/}
+                    {/*    <Image*/}
+                    {/*        src="/profile-picture.svg"*/}
+                    {/*        alt="Lior Vainer profile photo"*/}
+                    {/*        width={160}*/}
+                    {/*        height={160}*/}
+                    {/*        className="relative size-32 md:size-40 rounded-full border-2 border-white/20 object-cover shadow-[0_0_40px_rgba(255,255,255,0.1)]"*/}
+                    {/*        priority*/}
+                    {/*    />*/}
+                    {/*</div>*/}
+
+                    {/* Subtle label */}
+                    <span className="text-xs md:text-sm tracking-[0.3em] text-white/50 uppercase">
+                        Senior Full-Stack Engineer
+                    </span>
+
+                    {/* Name */}
+                    <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-light tracking-tight mix-blend-exclusion text-white whitespace-nowrap pointer-events-none">
+                        LIOR VAINER
+                    </h1>
+
+                    {/* Typewriter - cycling through different focuses */}
+                    <div className="h-16 flex items-center">
+                        <Typewriter
+                            text={[
+                                "Building scalable real-time systems",
+                                "Crafting cloud-native architectures",
+                                "Creating open-source developer tools",
+                                "Integrating AI into production apps",
+                            ]}
+                            speed={70}
+                            deleteSpeed={40}
+                            delay={2000}
+                            loop
+                            className="text-base sm:text-lg md:text-xl text-center text-white/70 mix-blend-exclusion max-w-xl leading-relaxed pointer-events-none"
+                        />
+                    </div>
+
+                    {/* CTA Buttons */}
+                    <div className="flex gap-4 mt-4">
+                        <a
+                            href="#projects"
+                            className="px-6 py-3 bg-white text-black text-sm font-medium rounded-full hover:bg-white/90 transition-all hover:scale-105"
+                        >
+                            View Projects
+                        </a>
+                        <a
+                            href="#contact"
+                            className="px-6 py-3 border border-white/30 text-white text-sm font-medium rounded-full hover:bg-white/10 transition-all"
+                        >
+                            Get in Touch
+                        </a>
+                    </div>
+
+                    {/* Social Links */}
+                    <div className="flex gap-6 mt-8">
+                        <SocialLink
+                            href="https://github.com/yourusername"
+                            label="GitHub"
+                        />
+                        <SocialLink
+                            href="https://linkedin.com/in/yourusername"
+                            label="LinkedIn"
+                        />
+                        <SocialLink
+                            href="mailto:liorvainer@gmail.com"
+                            label="Email"
+                        />
+                    </div>
+                </div>
+
+                {/* Scroll Indicator */}
+                <ScrollIndicator />
+            </section>
+
+            {/* Projects Section */}
+            <ProjectsSection />
+
+            {/* Experience Section */}
+            <ExperienceSection />
+
+            {/* Skills Section */}
+            <SkillsSection />
+
+            {/* Contact Section */}
+            <ContactSection />
+        </main>
+    );
+}
+
+function SocialLink({ href, label }: { href: string; label: string }) {
+    return (
+        <a
+            href={href}
             target="_blank"
             rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
-  );
+            className="text-white/50 hover:text-white text-sm tracking-wide transition-colors"
+        >
+            {label}
+        </a>
+    );
 }
