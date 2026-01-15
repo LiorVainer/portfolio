@@ -9,12 +9,12 @@
 - [x] 1.6 (Added) Install @types/three for existing Three.js code
 
 ## 2. Skills Section - Technology Icons
-- [ ] 2.1 Create `src/components/icons/tech-icons.tsx` with inline SVG icons for each technology
-- [ ] 2.2 Create icon mapping: skill name → icon component
-- [ ] 2.3 Add category fallback icons using Lucide (Database, Code, Cloud, Cpu)
-- [ ] 2.4 Update skill badges to show icon (16px) + text
-- [ ] 2.5 Icons use `aria-hidden="true"` (decorative)
-- [ ] 2.6 Run `pnpm run build` to verify
+- [x] 2.1 Install `developer-icons` package (instead of custom SVGs)
+- [x] 2.2 Create `src/components/icons/tech-icons.tsx` with icon wrappers
+- [x] 2.3 Create icon mapping: skill name → icon component
+- [x] 2.4 Add category fallback icons using Lucide (Database, Code, Cloud, Cpu)
+- [x] 2.5 Update skill badges to show icon (14px) + text with `aria-hidden="true"`
+- [x] 2.6 Run `pnpm run build` to verify
 
 ## 3. Projects Section - WebPreview (AI Elements)
 - [ ] 3.1 Install AI Elements: `npx ai-elements@latest` and select web-preview component

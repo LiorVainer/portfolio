@@ -5,6 +5,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { getSkillIcon } from "@/components/icons/tech-icons";
 
 const skillCategories = [
     {
@@ -13,9 +14,15 @@ const skillCategories = [
             "React",
             "Next.js",
             "React Native",
+            "Redux.js",
             "TypeScript",
+            "JavaScript",
             "Tailwind CSS",
-            "Framer Motion",
+            "ShadCN",
+            "Sass",
+            "HTML",
+            "CSS",
+            "Figma",
         ],
     },
     {
@@ -24,9 +31,12 @@ const skillCategories = [
             "Node.js",
             "NestJS",
             "Express",
-            "Kafka",
-            "WebSockets",
+            "Spring Boot",
+            "Java",
+            "Kotlin",
             "REST APIs",
+            "WebSocket",
+            "SSE",
         ],
     },
     {
@@ -34,20 +44,46 @@ const skillCategories = [
         skills: [
             "AWS",
             "Azure",
-            "Kubernetes",
+            "Azure DevOps",
+            "Lambda",
+            "Azure Functions",
+            "S3",
+            "Azure Blob",
+            "SQS",
+            "Service Bus",
+            "Rekognition",
             "Docker",
+            "Kubernetes",
             "CI/CD",
-            "Microservices",
         ],
     },
     {
-        title: "Data & AI",
+        title: "Data & Storage",
         skills: [
             "PostgreSQL",
             "MongoDB",
             "Redis",
-            "LLM Integration",
-            "AI Agents",
+            "SQL Server",
+            "TypeORM",
+            "Apache Kafka",
+        ],
+    },
+    {
+        title: "AI & ML",
+        skills: ["Google Gemini", "AI Agents", "Artificial Intelligence"],
+    },
+    {
+        title: "Testing & Tools",
+        skills: [
+            "Jest",
+            "Unit Testing",
+            "Code Coverage",
+            "npm",
+            "Nx",
+            "Monorepo",
+            "Observability",
+            "Agile",
+            "Version Control",
         ],
     },
 ];
@@ -72,7 +108,7 @@ export function SkillsSection() {
                 </motion.div>
 
                 {/* Skills Grid */}
-                <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-fr">
                     {skillCategories.map((category, i) => (
                         <motion.div
                             key={category.title}
@@ -80,20 +116,31 @@ export function SkillsSection() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: i * 0.1 }}
-                            className="p-6 bg-white/5 border border-white/10 rounded-2xl"
+                            className="h-full p-6 bg-white/5 border border-white/10 rounded-2xl flex flex-col"
                         >
                             <h3 className="text-sm font-medium text-white/80 mb-4">
                                 {category.title}
                             </h3>
+
                             <div className="flex flex-wrap gap-2">
-                                {category.skills.map((skill) => (
-                                    <span
-                                        key={skill}
-                                        className="text-xs px-3 py-1.5 bg-white/5 text-white/60 rounded-full hover:bg-white/10 hover:text-white transition-colors cursor-default"
-                                    >
-                                        {skill}
-                                    </span>
-                                ))}
+                                {category.skills.map((skill) => {
+                                    const Icon = getSkillIcon(
+                                        skill,
+                                        category.title,
+                                    );
+                                    return (
+                                        <span
+                                            key={skill}
+                                            className="inline-flex items-center gap-1.5 text-xs px-3 py-1.5 bg-white/5 text-white/60 rounded-full hover:bg-white/10 hover:text-white transition-colors cursor-default"
+                                        >
+                                            <Icon
+                                                size={14}
+                                                aria-hidden="true"
+                                            />
+                                            {skill}
+                                        </span>
+                                    );
+                                })}
                             </div>
                         </motion.div>
                     ))}

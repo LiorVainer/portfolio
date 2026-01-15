@@ -2,6 +2,7 @@
 // page.tsx - Enhanced Homepage
 // ============================================
 
+import { Github, Linkedin, Mail } from "lucide-react";
 import Image from "next/image";
 import { DotScreenShader } from "@/components/dot-shader-background";
 import { Navigation } from "@/components/navigation";
@@ -31,17 +32,17 @@ export default function Home() {
                 {/* Content */}
                 <div className="relative z-10 flex flex-col items-center gap-6 px-4">
                     {/* Profile Picture */}
-                    {/*<div className="relative">*/}
-                    {/*    <div className="absolute inset-0 rounded-full bg-white/10 blur-xl scale-110" />*/}
-                    {/*    <Image*/}
-                    {/*        src="/profile-picture.svg"*/}
-                    {/*        alt="Lior Vainer profile photo"*/}
-                    {/*        width={160}*/}
-                    {/*        height={160}*/}
-                    {/*        className="relative size-32 md:size-40 rounded-full border-2 border-white/20 object-cover shadow-[0_0_40px_rgba(255,255,255,0.1)]"*/}
-                    {/*        priority*/}
-                    {/*    />*/}
-                    {/*</div>*/}
+                    <div className="relative">
+                        <div className="absolute inset-0 rounded-full bg-white/10 blur-xl scale-110" />
+                        <Image
+                            src="/profile-picture.jpg"
+                            alt="Lior Vainer profile photo"
+                            width={160}
+                            height={160}
+                            className="relative size-32 md:size-40 rounded-full border-2 border-white/20 object-cover shadow-[0_0_40px_rgba(255,255,255,0.1)]"
+                            priority
+                        />
+                    </div>
 
                     {/* Subtle label */}
                     <span className="text-xs md:text-sm tracking-[0.3em] text-white/50 uppercase">
@@ -87,19 +88,29 @@ export default function Home() {
                     </div>
 
                     {/* Social Links */}
-                    <div className="flex gap-6 mt-8">
-                        <SocialLink
-                            href="https://github.com/yourusername"
-                            label="GitHub"
-                        />
-                        <SocialLink
-                            href="https://linkedin.com/in/yourusername"
-                            label="LinkedIn"
-                        />
-                        <SocialLink
+                    <div className="flex items-center gap-4 mt-8">
+                        <a
+                            href="https://github.com/LiorVainer"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="p-3 bg-white/5 border border-white/10 rounded-full text-white/60 hover:text-white hover:bg-white/10 hover:border-white/20 transition-all"
+                        >
+                            <Github size={20} />
+                        </a>
+                        <a
+                            href="https://linkedin.com/in/lior-vainer"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="p-3 bg-white/5 border border-white/10 rounded-full text-white/60 hover:text-white hover:bg-white/10 hover:border-white/20 transition-all"
+                        >
+                            <Linkedin size={20} />
+                        </a>
+                        <a
                             href="mailto:liorvainer@gmail.com"
-                            label="Email"
-                        />
+                            className="p-3 bg-white/5 border border-white/10 rounded-full text-white/60 hover:text-white hover:bg-white/10 hover:border-white/20 transition-all"
+                        >
+                            <Mail size={20} />
+                        </a>
                     </div>
                 </div>
 
@@ -119,18 +130,5 @@ export default function Home() {
             {/* Contact Section */}
             <ContactSection />
         </main>
-    );
-}
-
-function SocialLink({ href, label }: { href: string; label: string }) {
-    return (
-        <a
-            href={href}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-white/50 hover:text-white text-sm tracking-wide transition-colors"
-        >
-            {label}
-        </a>
     );
 }

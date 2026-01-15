@@ -64,7 +64,7 @@ export function ExperienceSection() {
                         >
                             {/* Dot */}
                             <div
-                                className={`absolute left-0 md:left-4 top-1 w-2 h-2 -translate-x-1/2 rounded-full ${exp.current ? "bg-emerald-500 ring-4 ring-emerald-500/20" : "bg-white/40"}`}
+                                className={`absolute left-0 md:left-4 top-2 w-2 h-2 -translate-x-1/2 rounded-full ${exp.current ? "bg-emerald-500 ring-4 ring-emerald-500/20" : "bg-white/40"}`}
                             />
 
                             {/* Content */}

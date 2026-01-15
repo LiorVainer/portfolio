@@ -2,43 +2,54 @@
 
 import { motion } from "framer-motion";
 import { ExternalLink, Github } from "lucide-react";
+import { ImageSwiper } from "@/components/ui/image-swiper";
+import { cn } from "@/lib/utils";
 
 const projects = [
     {
+        title: "Nest Hex",
+        description:
+            "A tiny, class-based, NestJS-native library for building pluggable adapters following the Ports & Adapters (Hexagonal Architecture) pattern with minimal boilerplate.",
+        tags: ["NestJS", "CLI", "CI/CD", "TypeScript"],
+        liveUrl: "https://npmjs.com/package/nest-hex",
+        githubUrl: "https://github.com/LiorVainer/nest-hex",
+        gradient: "from-emerald-500 to-teal-600",
+        images: [],
+    },
+    {
+        title: "SportScanner",
+        description:
+            "AI-powered platform for discovering and generating personalized sport match travel packages. Search, refine, and collaborate on group trips based on your favorite teams.",
+        tags: ["Google Gemini", "AI Agents", "SSE", "Observability"],
+        liveUrl: undefined,
+        githubUrl: "https://github.com/LiorVainer/sport-scanner",
+        gradient: "from-orange-500 to-red-500",
+        images: [],
+    },
+    {
         title: "Sitewave",
         description:
-            "AI-powered website discovery and bookmarking assistant with natural language prompts and searchable bookmark trees.",
-        tags: ["Next.js", "AI/LLM", "TypeScript"],
+            "AI-powered website discovery and bookmarking assistant. Suggests useful websites via natural language prompts, enriched with videos, folder suggestions, and a searchable bookmark tree.",
+        tags: ["Next.js", "Tailwind CSS", "Convex", "Clerk"],
         liveUrl: "https://sitewave.app",
-        githubUrl: "https://github.com/yourusername/sitewave",
+        githubUrl: "https://github.com/LiorVainer/sitewave",
         gradient: "from-violet-500 to-purple-600",
+        images: [
+            "/sitewave-1.png",
+            "/sitewave-2.png",
+            "/sitewave-3.png",
+            "/sitewave-4.png",
+        ],
     },
     {
-        title: "4rest",
+        title: "4REST",
         description:
-            "Type-safe HTTP REST Client with extensible services, CRUD methods, and Zod validation. 100% test coverage.",
-        tags: ["TypeScript", "npm", "REST"],
+            "HTTP REST Client built on top of axios and zod packages. Easy to use and extensively customizable, extendable and configurable services with built-in CRUD methods.",
+        tags: ["TypeScript", "npm", "Jest", "REST APIs"],
         liveUrl: "https://npmjs.com/package/4rest",
-        githubUrl: "https://github.com/yourusername/4rest",
+        githubUrl: "https://github.com/LiorVainer/4rest",
         gradient: "from-cyan-500 to-blue-600",
-    },
-    {
-        title: "Starzi",
-        description:
-            "Multilingual movie discovery platform with IMDB data integration, alerts, and Hebrew localization.",
-        tags: ["React", "Node.js", "MongoDB"],
-        liveUrl: "https://starzi.app",
-        githubUrl: "https://github.com/yourusername/starzi",
-        gradient: "from-orange-500 to-red-500",
-    },
-    {
-        title: "nest-hex",
-        description:
-            "NestJS-native library for hexagonal architecture with pluggable adapters and a built-in generator CLI tool.",
-        tags: ["NestJS", "Architecture", "CLI"],
-        liveUrl: "https://npmjs.com/package/nest-hex",
-        githubUrl: "https://github.com/yourusername/nest-hex",
-        gradient: "from-emerald-500 to-teal-600",
+        images: [],
     },
 ];
 
@@ -72,11 +83,22 @@ export function ProjectsSection() {
                             transition={{ delay: i * 0.1 }}
                             className="group relative bg-white/5 border border-white/10 rounded-2xl overflow-hidden hover:border-white/20 transition-all"
                         >
-                            {/* Gradient accent */}
-                            <div
-                                className={`h-1 w-full bg-gradient-to-r ${project.gradient}`}
-                            />
+                            {/* Project Images */}
+                            {project.images.length > 0 ? (
+                                <ImageSwiper
+                                    images={project.images}
+                                    className="h-[200px] aspect-auto rounded-none rounded-t-2xl"
+                                />
+                            ) : (
+                                <div
+                                    className={cn(
+                                        "h-[200px] bg-gradient-to-br opacity-30",
+                                        project.gradient,
+                                    )}
+                                />
+                            )}
 
+                            {/* Content */}
                             <div className="p-6">
                                 <div className="flex items-start justify-between mb-4">
                                     <h3 className="text-xl font-medium text-white">
