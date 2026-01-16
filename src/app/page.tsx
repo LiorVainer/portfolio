@@ -5,130 +5,153 @@
 import { Github, Linkedin, Mail } from "lucide-react";
 import Image from "next/image";
 import { DotScreenShader } from "@/components/dot-shader-background";
+import { FullScreenLoader } from "@/components/full-screen-loader";
+import { HashRedirect } from "@/components/hash-redirect";
 import { Navigation } from "@/components/navigation";
+import { ScrollProgressBar } from "@/components/scroll-progress-bar";
 import { ContactSection } from "@/components/sections/contact";
 import { ExperienceSection } from "@/components/sections/experience";
 import { ProjectsSection } from "@/components/sections/projects";
 import { SkillsSection } from "@/components/sections/skills";
-import { ScrollIndicator } from "@/components/ui/scroll-indicator";
 import { Typewriter } from "@/components/ui/typewriter-text";
+
+const ABOUT_DESCRIPTION =
+    "I'm a Senior Full-Stack Software Engineer experienced in building scalable TypeScript-based systems with React, Node.js, and NestJS. I've worked on large-scale, real-time, cloud-native platforms using AWS, Azure, microservices, and Kubernetes. My focus is on system design, AI integration, and end-to-end development of production-grade systems.";
 
 export default function Home() {
     return (
-        <main className="bg-black">
-            {/* Fixed Navigation */}
-            <Navigation />
+        <FullScreenLoader>
+            {/* Redirect to base URL if hash is present */}
+            <HashRedirect />
 
-            {/* Hero Section */}
-            <section
-                id="hero"
-                className="h-svh w-screen flex flex-col gap-6 items-center justify-center relative overflow-hidden"
-            >
-                {/* Shader Background */}
-                <div className="absolute inset-0">
-                    <DotScreenShader />
-                </div>
+            <main className="bg-black">
+                {/* Fixed Navigation */}
+                <Navigation />
 
-                {/* Content */}
-                <div className="relative z-10 flex flex-col items-center gap-6 px-4">
-                    {/* Profile Picture */}
-                    <div className="relative">
-                        <div className="absolute inset-0 rounded-full bg-white/10 blur-xl scale-110" />
-                        <Image
-                            src="/profile-picture.jpg"
-                            alt="Lior Vainer profile photo"
-                            width={160}
-                            height={160}
-                            className="relative size-32 md:size-40 rounded-full border-2 border-white/20 object-cover shadow-[0_0_40px_rgba(255,255,255,0.1)]"
-                            priority
-                        />
+                {/* Scroll Progress Bar */}
+                <ScrollProgressBar />
+
+                {/* Hero Section */}
+                <section
+                    id="hero"
+                    className="h-svh w-screen flex flex-col items-center justify-center relative overflow-hidden"
+                >
+                    {/* Shader Background */}
+                    <div className="absolute inset-0">
+                        <DotScreenShader />
                     </div>
 
-                    {/* Subtle label */}
-                    <span className="text-xs md:text-sm tracking-[0.3em] text-white/50 uppercase">
-                        Senior Full-Stack Engineer
-                    </span>
+                    {/* Content */}
+                    <div className="relative z-10 flex flex-col items-center gap-6 px-4">
+                        {/* Subtle label */}
+                        <span className="text-xs md:text-sm tracking-[0.3em] text-white/50 uppercase">
+                            Senior Full-Stack Engineer
+                        </span>
 
-                    {/* Name */}
-                    <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-light tracking-tight mix-blend-exclusion text-white whitespace-nowrap pointer-events-none">
-                        LIOR VAINER
-                    </h1>
+                        {/* Name */}
+                        <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-light tracking-tight mix-blend-exclusion text-white whitespace-nowrap pointer-events-none">
+                            LIOR VAINER
+                        </h1>
 
-                    {/* Typewriter - cycling through different focuses */}
-                    <div className="h-16 flex items-center">
-                        <Typewriter
-                            text={[
-                                "Building scalable real-time systems",
-                                "Crafting cloud-native architectures",
-                                "Creating open-source developer tools",
-                                "Integrating AI into production apps",
-                            ]}
-                            speed={70}
-                            deleteSpeed={40}
-                            delay={2000}
-                            loop
-                            className="text-base sm:text-lg md:text-xl text-center text-white/70 mix-blend-exclusion max-w-xl leading-relaxed pointer-events-none"
-                        />
+                        {/* CTA Buttons */}
+                        <div className="flex gap-4 mt-6">
+                            <a
+                                href="#projects"
+                                className="px-6 py-3 bg-white text-black text-sm font-medium rounded-full hover:bg-white/90 transition-all hover:scale-105"
+                            >
+                                View Projects
+                            </a>
+                            <a
+                                href="#contact"
+                                className="px-6 py-3 border border-white/30 text-white text-sm font-medium rounded-full hover:bg-white/10 transition-all"
+                            >
+                                Get in Touch
+                            </a>
+                        </div>
+
+                        {/* Social Links */}
+                        <div className="flex items-center gap-4 mt-8">
+                            <a
+                                href="https://github.com/LiorVainer"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="p-3 bg-white/5 border border-white/10 rounded-full text-white/60 hover:text-white hover:bg-white/10 hover:border-white/20 transition-all"
+                            >
+                                <Github size={20} />
+                            </a>
+                            <a
+                                href="https://linkedin.com/in/lior-vainer"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="p-3 bg-white/5 border border-white/10 rounded-full text-white/60 hover:text-white hover:bg-white/10 hover:border-white/20 transition-all"
+                            >
+                                <Linkedin size={20} />
+                            </a>
+                            <a
+                                href="mailto:liorvainer@gmail.com"
+                                className="p-3 bg-white/5 border border-white/10 rounded-full text-white/60 hover:text-white hover:bg-white/10 hover:border-white/20 transition-all"
+                            >
+                                <Mail size={20} />
+                            </a>
+                        </div>
                     </div>
+                </section>
 
-                    {/* CTA Buttons */}
-                    <div className="flex gap-4 mt-4">
-                        <a
-                            href="#projects"
-                            className="px-6 py-3 bg-white text-black text-sm font-medium rounded-full hover:bg-white/90 transition-all hover:scale-105"
-                        >
-                            View Projects
-                        </a>
-                        <a
-                            href="#contact"
-                            className="px-6 py-3 border border-white/30 text-white text-sm font-medium rounded-full hover:bg-white/10 transition-all"
-                        >
-                            Get in Touch
-                        </a>
+                {/* Profile / About Section */}
+                <section
+                    id="about"
+                    className="min-h-svh w-screen flex flex-col items-center justify-center relative overflow-hidden py-20 bg-black"
+                >
+                    {/* Content */}
+                    <div className="relative z-10 flex flex-col items-center gap-6 px-4">
+                        {/* Profile Picture */}
+                        <div className="relative">
+                            <div className="absolute inset-0 rounded-full bg-white/10 blur-xl scale-110" />
+                            <Image
+                                src="/profile-picture.jpg"
+                                alt="Lior Vainer profile photo"
+                                width={160}
+                                height={160}
+                                className="relative size-32 md:size-40 rounded-full border-2 border-white/20 object-cover shadow-[0_0_40px_rgba(255,255,255,0.1)]"
+                                priority
+                            />
+                        </div>
+
+                        {/* Section Title */}
+                        <h2 className="text-3xl sm:text-4xl md:text-5xl font-light tracking-tight text-white pointer-events-none">
+                            About Me
+                        </h2>
+
+                        {/* Extended About Description - container reserves space for full text */}
+                        <div className="max-w-2xl mt-4 relative">
+                            {/* Invisible text to reserve space */}
+                            <span className="text-sm sm:text-base text-center text-transparent leading-relaxed pointer-events-none block" aria-hidden="true">
+                                {ABOUT_DESCRIPTION}
+                            </span>
+                            {/* Typewriter positioned on top */}
+                            <Typewriter
+                                text={ABOUT_DESCRIPTION}
+                                speed={30}
+                                loop={false}
+                                startOnView
+                                className="text-sm sm:text-base text-center text-white/60 leading-relaxed pointer-events-none absolute inset-0"
+                            />
+                        </div>
                     </div>
+                </section>
 
-                    {/* Social Links */}
-                    <div className="flex items-center gap-4 mt-8">
-                        <a
-                            href="https://github.com/LiorVainer"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="p-3 bg-white/5 border border-white/10 rounded-full text-white/60 hover:text-white hover:bg-white/10 hover:border-white/20 transition-all"
-                        >
-                            <Github size={20} />
-                        </a>
-                        <a
-                            href="https://linkedin.com/in/lior-vainer"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="p-3 bg-white/5 border border-white/10 rounded-full text-white/60 hover:text-white hover:bg-white/10 hover:border-white/20 transition-all"
-                        >
-                            <Linkedin size={20} />
-                        </a>
-                        <a
-                            href="mailto:liorvainer@gmail.com"
-                            className="p-3 bg-white/5 border border-white/10 rounded-full text-white/60 hover:text-white hover:bg-white/10 hover:border-white/20 transition-all"
-                        >
-                            <Mail size={20} />
-                        </a>
-                    </div>
-                </div>
+                {/* Projects Section */}
+                <ProjectsSection />
 
-                {/* Scroll Indicator */}
-                <ScrollIndicator />
-            </section>
+                {/* Experience Section */}
+                <ExperienceSection />
 
-            {/* Projects Section */}
-            <ProjectsSection />
+                {/* Skills Section */}
+                <SkillsSection />
 
-            {/* Experience Section */}
-            <ExperienceSection />
-
-            {/* Skills Section */}
-            <SkillsSection />
-
-            {/* Contact Section */}
-            <ContactSection />
-        </main>
+                {/* Contact Section */}
+                <ContactSection />
+            </main>
+        </FullScreenLoader>
     );
 }
