@@ -61,7 +61,8 @@ export function ProjectsSection() {
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
+                    viewport={{ once: true, amount: 0.5 }}
+                    transition={{ duration: 0.5 }}
                     className="mb-16"
                 >
                     <span className="text-xs tracking-[0.3em] text-white/40 uppercase">
@@ -79,8 +80,8 @@ export function ProjectsSection() {
                             key={project.title}
                             initial={{ opacity: 0, y: 30 }}
                             whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: i * 0.1 }}
+                            viewport={{ once: true, amount: 0.1, margin: "-50px" }}
+                            transition={{ delay: i * 0.1, duration: 0.5 }}
                             className="group relative bg-white/5 border border-white/10 rounded-2xl overflow-hidden hover:border-white/20 transition-all"
                         >
                             {/* Project Images */}
